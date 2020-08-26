@@ -3,7 +3,7 @@
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
 * Hans Erling Klevstad, s341872, s341872@oslomet.no
-* ...
+* Brian Banne, s329333, s329333@oslomet.no
 
 # Arbeidsfordeling
 
