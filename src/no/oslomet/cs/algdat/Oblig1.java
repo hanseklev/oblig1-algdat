@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class Oblig1 {
@@ -11,14 +12,23 @@ public class Oblig1 {
     public static int maks(int[] a) {
         sjekkarraylengde(a);
         int n = a.length;
+        int teller = 0;
+        boolean bytt;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n-i); j++) {
-                if (a[j-1] > a[j]) {
-                    int midlertidig = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = midlertidig;
+
+        for (int i = 0; i < n-1; i++) {
+            bytt=false;
+            for (int j = 0; j < (n-i-1); j++) {
+                if (a[j] > a[j+1]) {
+                    int midlertidig = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = midlertidig;
+                    bytt=true;
+                    teller++;
                 }
+            }
+            if (bytt=false) {
+                break;
             }
         }
         return a[a.length-1];
@@ -27,37 +37,50 @@ public class Oblig1 {
 
         // det blir minst ombyttinger når metoden står i stigene rekkefolge
 
-        //
+        //o(n*n)
     }
+    // dette er feil måte å ta avvik
     private static void sjekkarraylengde(int[] a) {
         if (a == null) {
-            throw new IllegalArgumentException("Arrayen " + a + " er tom");
+            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tom");
         }
     }
-
+        // int[] e, f gir feil resultater
+        // blir ikke riktig opptelling for a,c,d
     public static int ombyttinger(int[] a) {
         sjekkarraylengde(a);
         int n = a.length;
-        int counter = 0;
+        int teller = 0;
+        boolean bytt;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n-i); j++) {
-                if (a[j-1] > a[j]) {
-                    int midlertidig = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = midlertidig;
-                    counter++;
+
+        for (int i = 0; i < n-1; i++) {
+            bytt=false;
+            for (int j = 0; j < (n-i-1); j++) {
+                if (a[j] > a[j+1]) {
+                    int midlertidig = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = midlertidig;
+                    bytt=true;
+                    teller++;
                 }
             }
+            if (bytt=false) {
+                break;
+            }
         }
-        System.out.println(counter);
-        return counter;
+        return teller;
     }
 
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
+        sjekkarraylengde(a);
+        int tallteller = 0;
+
+
+
+        return tallteller;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
