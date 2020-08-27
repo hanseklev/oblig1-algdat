@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Oblig1 {
     private Oblig1(){}
@@ -8,7 +9,7 @@ public class Oblig1 {
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        arraykontroll(a);
+        sjekkarraylengde(a);
         int n = a.length;
 
         for (int i = 0; i < n; i++) {
@@ -21,16 +22,38 @@ public class Oblig1 {
             }
         }
         return a[a.length-1];
+        // metoden vil ha flest ombyttinger når arrayet er omvendt sortert.
+        // altså størst først og minst sist
+
+        // det blir minst ombyttinger når metoden står i stigene rekkefolge
+
+        //
     }
-    public static void arraykontroll(int[] a) {
+    private static void sjekkarraylengde(int[] a) {
         if (a == null) {
             throw new IllegalArgumentException("Arrayen " + a + " er tom");
         }
     }
 
     public static int ombyttinger(int[] a) {
-        throw new UnsupportedOperationException();
+        sjekkarraylengde(a);
+        int n = a.length;
+        int counter = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n-i); j++) {
+                if (a[j-1] > a[j]) {
+                    int midlertidig = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = midlertidig;
+                    counter++;
+                }
+            }
+        }
+        System.out.println(counter);
+        return counter;
     }
+
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
