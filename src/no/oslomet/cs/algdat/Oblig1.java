@@ -1,12 +1,31 @@
 package no.oslomet.cs.algdat;
 
+import java.util.Arrays;
+
 public class Oblig1 {
     private Oblig1(){}
 
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        throw new UnsupportedOperationException();
+        arraykontroll(a);
+        int n = a.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n-i); j++) {
+                if (a[j-1] > a[j]) {
+                    int midlertidig = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = midlertidig;
+                }
+            }
+        }
+        return a[a.length-1];
+    }
+    public static void arraykontroll(int[] a) {
+        if (a == null) {
+            throw new IllegalArgumentException("Arrayen " + a + " er tom");
+        }
     }
 
     public static int ombyttinger(int[] a) {
