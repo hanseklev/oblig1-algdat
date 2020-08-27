@@ -49,12 +49,56 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0) return; //hvis tabellen er tom returner metoden arrayet uten modifikasjoner
+        char siste = a[a.length-1];
+        int j;
+        for (j = a.length-1; j > 0 ; j--) {
+            a[j]=a[j-1];
+        }
+        a[0] = siste;
     }
+
+    //TODO: EFFECTIVE, (gcd)?
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new UnsupportedOperationException();
+        if (a.length == 0) return; //hvis tabellen er tom returner metoden arrayet uten modifikasjoner
+
+        if (k > 0) roterHoyre(a, k);
+        if (k< 0) roterVenstre(a, k);
+/*
+        char siste = a[a.length - 1];
+        int j;
+        for (j = a.length-1; j > 0 ; j--) {
+            a[j]=a[j-1];
+        }
+        a[0] = siste;*/
+    }
+
+    private static void roterHoyre(char[] a, int antall){
+        for (int i = 0; i < antall; i++) {
+            char siste = a[a.length-1];
+            int j;
+
+            for (j = a.length-1; j > 0 ; j--) {
+                a[j]=a[j-1];
+            }
+            a[0] = siste;
+        }
+    }
+
+    private static void roterVenstre(char[] a, int antall){
+        int k = Math.abs(antall);
+        for (int i = 0; i < k; i++) {
+            char first = a[0];
+
+            int j;
+            for (j = 0; j < a.length -1 ; j++) {
+                a[j] = a[j + 1];
+            }
+            a[a.length-1] = first;
+        }
+
     }
 
     ///// Oppgave 7 //////////////////////////////////////
@@ -88,4 +132,7 @@ public class Oblig1 {
     }
 
     //Tut og kjør
+
+
+
 }
