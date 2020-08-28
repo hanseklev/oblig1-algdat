@@ -2,6 +2,8 @@ package no.oslomet.cs;
 
 import no.oslomet.cs.algdat.Oblig1;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,6 +14,12 @@ public class Main {
 
         int[] b= {1, 2, 3, 4, 5};
         Oblig1.ombyttinger(b);
+        int[] d = {1, 2, 3, 4, 5};
+        Oblig1.antallUlikeSortert(d);
+
+        int[] e = {6, 2, 4, 6, 9, 1, 4, 9, 10};
+        Oblig1.antallUlikeUsortert(e);
+
 
 
         char[] a = {'A','B','C','D','E','F','G','H','I','J'};

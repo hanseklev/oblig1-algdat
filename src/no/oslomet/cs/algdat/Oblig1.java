@@ -13,22 +13,15 @@ public class Oblig1 {
         sjekkarraylengde(a);
         int n = a.length;
         int teller = 0;
-        boolean bytt;
-
 
         for (int i = 0; i < n-1; i++) {
-            bytt=false;
             for (int j = 0; j < (n-i-1); j++) {
                 if (a[j] > a[j+1]) {
                     int midlertidig = a[j];
                     a[j] = a[j+1];
                     a[j+1] = midlertidig;
-                    bytt=true;
                     teller++;
                 }
-            }
-            if (bytt=false) {
-                break;
             }
         }
         return a[a.length-1];
@@ -75,17 +68,45 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        sjekkarraylengde(a);
-        int tallteller = 0;
-
-
-
+        if (a.length == 0) {
+            return 0;
+        }
+        try {
+            maks(a);
+        } catch (Exception e) {
+            throw new IllegalStateException("\nArrayet må være sortert i stigende rekkefolge");
+        }
+            int tallteller = 1;
+            int n = a.length;
+            for (int i = 1; i < n; i++) {
+                if (a[i] != a[i-1]) {
+                    tallteller++;
+                }
+            }
+        System.out.println(tallteller);
         return tallteller;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+       int talltaller = 1;
+       int n= a.length;
+        if (n == 0) {
+            return 0;
+        }
+
+       for (int i = 1; i < n; i++) {
+           int j=0;
+           for ( j=0; j < i; j++) {
+               if (a[i] == a[j]) {
+                   break;
+               }
+           }
+           if (i == j) {
+               talltaller++;
+           }
+       }
+       return talltaller;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
