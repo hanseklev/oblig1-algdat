@@ -176,7 +176,6 @@ public class Oblig1 {
         char[] b = t.toCharArray();
         char[] mergedArray = new char[a.length + b.length];
 
-        StringBuilder sb = new StringBuilder();
         int i = 0, j = 0, k = 0;
 
         while (i < a.length && j < b.length) {
@@ -187,15 +186,38 @@ public class Oblig1 {
         while (j < b.length) mergedArray[k++] = b[j++];
         while (i < a.length) mergedArray[k++] = a[i++];
 
-        for (char c : mergedArray) {
-            sb.append(c);
-        }
-        return sb.toString();
+        return charArraytoString((mergedArray));
     }
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        final int MAX_STRING_LENGDE = 30; // grense for hvor lang en string kan være
+        char[] mergedArray = new char[getStringArrayLength(s)];
+        int k = 0;
+
+        for (int i = 0; i < MAX_STRING_LENGDE; i++) {
+            for (int j = 0; j < s.length; j++) {
+                char[] currentWord = s[j].toCharArray();
+                if (currentWord.length <= i) continue; //hopper til neste ord hvis det ikke er flere bokstaver igjen på gitt plass
+                mergedArray[k++] = currentWord[i];
+            }
+        }
+        return charArraytoString(mergedArray);
+    }
+
+    ///     Hjelpemetoder oppgave 7     ///
+    private static String charArraytoString(char[] arr) {
+        StringBuilder sb = new StringBuilder();
+        for (char str : arr) sb.append(str);
+        return sb.toString();
+    }
+
+    private static int getStringArrayLength(String... s) {
+        int sum = 0;
+        for (String str : s) {
+            sum += str.chars().count();
+        }
+        return sum;
     }
 
     ///// Oppgave 8 //////////////////////////////////////

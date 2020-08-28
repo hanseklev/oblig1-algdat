@@ -5,7 +5,7 @@ import no.oslomet.cs.algdat.Oblig1;
 public class Main {
 
     public static void main(String[] args) {
-	// kjør statiske greier her
+        // kjør statiske greier her
 /*
 
         int[] c = {6, 5, 4, 3, 2, 1};
@@ -28,10 +28,7 @@ public class Main {
         System.out.print(Oblig1.antallUlikeUsortert(b));
         */
 
-
-        System.out.print(Oblig1.flett("", "ABC"));
-
-
+        System.out.println(Oblig1.flett("AM ", "L", "GEDS", "ORAKTRR", "", "R TRTE", "IO", "TGAUU"));
 
 
     }
