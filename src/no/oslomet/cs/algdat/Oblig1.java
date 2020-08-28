@@ -1,11 +1,10 @@
 package no.oslomet.cs.algdat;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Random;
 
 public class Oblig1 {
-    private Oblig1(){}
+    private Oblig1() {
+    }
 
 
     ///// Oppgave 1 //////////////////////////////////////
@@ -14,17 +13,17 @@ public class Oblig1 {
         int n = a.length;
         int teller = 0;
 
-        for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < (n-i-1); j++) {
-                if (a[j] > a[j+1]) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < (n - i - 1); j++) {
+                if (a[j] > a[j + 1]) {
                     int midlertidig = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = midlertidig;
+                    a[j] = a[j + 1];
+                    a[j + 1] = midlertidig;
                     teller++;
                 }
             }
         }
-        return a[a.length-1];
+        return a[a.length - 1];
         // metoden vil ha flest ombyttinger når arrayet er omvendt sortert.
         // altså størst først og minst sist
 
@@ -32,14 +31,16 @@ public class Oblig1 {
 
         //o(n*n)
     }
+
     // dette er feil måte å ta avvik
     private static void sjekkarraylengde(int[] a) {
         if (a == null) {
             throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tom");
         }
     }
-        // int[] e, f gir feil resultater
-        // blir ikke riktig opptelling for a,c,d
+
+    // int[] e, f gir feil resultater
+    // blir ikke riktig opptelling for a,c,d
     public static int ombyttinger(int[] a) {
         sjekkarraylengde(a);
         int n = a.length;
@@ -47,18 +48,18 @@ public class Oblig1 {
         boolean bytt;
 
 
-        for (int i = 0; i < n-1; i++) {
-            bytt=false;
-            for (int j = 0; j < (n-i-1); j++) {
-                if (a[j] > a[j+1]) {
+        for (int i = 0; i < n - 1; i++) {
+            bytt = false;
+            for (int j = 0; j < (n - i - 1); j++) {
+                if (a[j] > a[j + 1]) {
                     int midlertidig = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = midlertidig;
-                    bytt=true;
+                    a[j] = a[j + 1];
+                    a[j + 1] = midlertidig;
+                    bytt = true;
                     teller++;
                 }
             }
-            if (bytt=false) {
+            if (bytt = false) {
                 break;
             }
         }
@@ -76,37 +77,37 @@ public class Oblig1 {
         } catch (Exception e) {
             throw new IllegalStateException("\nArrayet må være sortert i stigende rekkefolge");
         }
-            int tallteller = 1;
-            int n = a.length;
-            for (int i = 1; i < n; i++) {
-                if (a[i] != a[i-1]) {
-                    tallteller++;
-                }
+        int tallteller = 1;
+        int n = a.length;
+        for (int i = 1; i < n; i++) {
+            if (a[i] != a[i - 1]) {
+                tallteller++;
             }
+        }
         System.out.println(tallteller);
         return tallteller;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-       int talltaller = 1;
-       int n= a.length;
+        int talltaller = 1;
+        int n = a.length;
         if (n == 0) {
             return 0;
         }
 
-       for (int i = 1; i < n; i++) {
-           int j=0;
-           for ( j=0; j < i; j++) {
-               if (a[i] == a[j]) {
-                   break;
-               }
-           }
-           if (i == j) {
-               talltaller++;
-           }
-       }
-       return talltaller;
+        for (int i = 1; i < n; i++) {
+            int j;
+            for (j = 0; j < i; j++) {
+                if (a[i] == a[j]) {
+                    break;
+                }
+            }
+            if (i == j) {
+                talltaller++;
+            }
+        }
+        return talltaller;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
@@ -117,10 +118,10 @@ public class Oblig1 {
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
         if (a.length == 0) return; //hvis tabellen er tom returner metoden arrayet uten modifikasjoner
-        char siste = a[a.length-1];
+        char siste = a[a.length - 1];
         int j;
-        for (j = a.length-1; j > 0 ; j--) {
-            a[j]=a[j-1];
+        for (j = a.length - 1; j > 0; j--) {
+            a[j] = a[j - 1];
         }
         a[0] = siste;
     }
@@ -132,7 +133,7 @@ public class Oblig1 {
         if (a.length == 0) return; //hvis tabellen er tom returner metoden arrayet uten modifikasjoner
 
         if (k > 0) roterHoyre(a, k);
-        if (k< 0) roterVenstre(a, k);
+        if (k < 0) roterVenstre(a, k);
 /*
         char siste = a[a.length - 1];
         int j;
@@ -142,28 +143,28 @@ public class Oblig1 {
         a[0] = siste;*/
     }
 
-    private static void roterHoyre(char[] a, int antall){
+    private static void roterHoyre(char[] a, int antall) {
         for (int i = 0; i < antall; i++) {
-            char siste = a[a.length-1];
+            char siste = a[a.length - 1];
             int j;
 
-            for (j = a.length-1; j > 0 ; j--) {
-                a[j]=a[j-1];
+            for (j = a.length - 1; j > 0; j--) {
+                a[j] = a[j - 1];
             }
             a[0] = siste;
         }
     }
 
-    private static void roterVenstre(char[] a, int antall){
+    private static void roterVenstre(char[] a, int antall) {
         int k = Math.abs(antall);
         for (int i = 0; i < k; i++) {
             char first = a[0];
 
             int j;
-            for (j = 0; j < a.length -1 ; j++) {
+            for (j = 0; j < a.length - 1; j++) {
                 a[j] = a[j + 1];
             }
-            a[a.length-1] = first;
+            a[a.length - 1] = first;
         }
 
     }
@@ -171,7 +172,25 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+        char[] a = s.toCharArray();
+        char[] b = t.toCharArray();
+        char[] mergedArray = new char[a.length + b.length];
+
+        StringBuilder sb = new StringBuilder();
+        int i = 0, j = 0, k = 0;
+
+        while (i < a.length && j < b.length) {
+            mergedArray[k++] = a[i++];
+            mergedArray[k++] = b[j++];
+        }
+        //Legger til i merged array det som er til overs
+        while (j < b.length) mergedArray[k++] = b[j++];
+        while (i < a.length) mergedArray[k++] = a[i++];
+
+        for (char c : mergedArray) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
 
     /// 7b)
@@ -199,7 +218,6 @@ public class Oblig1 {
     }
 
     //Tut og kjør
-
 
 
 }
