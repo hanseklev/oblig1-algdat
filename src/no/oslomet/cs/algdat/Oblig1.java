@@ -95,7 +95,18 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        int n = a.length;
+        int venstre = 0;
+        int ikkevenstre = n-1;
+
+        while (a[venstre] % 2 == 1) {
+            venstre++;
+        }
+        while (a[ikkevenstre] % 2 ==0) {
+            ikkevenstre--;
+        }
+
+
     }
 
     ///// Oppgave 5 //////////////////////////////////////
