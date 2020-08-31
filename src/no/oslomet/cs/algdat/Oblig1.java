@@ -10,7 +10,7 @@ public class Oblig1 {
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
         if (a.length == 0) {
-            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tomt");
+            throw new java.util.NoSuchElementException("Arrayet " + Arrays.toString(a) + " er tomt");
         }
         int n = a.length;
 
@@ -21,24 +21,18 @@ public class Oblig1 {
                 a[i + 1] = midlertidig;
             }
         }
-        System.out.println(a[a.length - 1]);
         return a[a.length - 1];
-        // metoden vil ha flest ombyttinger når arrayet er omvendt sortert.
-        // altså størst først og minst sist
+        // metoden vil ha flest ombyttinger nar arrayet er omvendt sortert.
+        // altsa størst forst og minst sist
 
         // det blir minst ombyttinger når metoden står i stigene rekkefolge
 
         //o(n*n)
     }
 
-    // dette er feil måte å ta avvik
-
-
-    // int[] e, f gir feil resultater
-    // blir ikke riktig opptelling for a,c,d
     public static int ombyttinger(int[] a) {
         if (a.length == 0) {
-            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tomt");
+            throw new java.util.NoSuchElementException("Arrayet " + Arrays.toString(a) + " er tomt");
         }
 
         int n = a.length;
@@ -74,7 +68,6 @@ public class Oblig1 {
                 tallteller++;
             }
         }
-        System.out.println(tallteller);
         return tallteller;
     }
 
@@ -229,7 +222,7 @@ public class Oblig1 {
         throw new UnsupportedOperationException();
     }
 
-    //Tut og kjør
+    //Tut og kjor
 
 
 }

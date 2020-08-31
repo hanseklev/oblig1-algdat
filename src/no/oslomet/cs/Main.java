@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // kjør statiske greier her
 
-
+/*
         int[] c = {};
         Oblig1.maks(c);
 
@@ -15,6 +15,8 @@ public class Main {
         Oblig1.ombyttinger(b);
         int[] d = {1, 2, 3, 4, 5};
         Oblig1.antallUlikeSortert(d);
+
+ */
 
 
            char[] a = {'A','B','C','D','E','F','G','H','I','J'};
@@ -24,7 +26,7 @@ public class Main {
 
 
         //int[] e = {6, 2, 4, 6, 9, 1, 4, 9, 10};
-        //int [] b = {5, 3};
+        int [] b = {5, 3};
         System.out.print(Oblig1.antallUlikeUsortert(b));
 
 
