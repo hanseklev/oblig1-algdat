@@ -17,6 +17,8 @@ public class Main {
         Oblig1.antallUlikeSortert(d);
 
  */
+        int [] d= {1,1,3,3,4,2,6,8,9};
+        Oblig1.delsortering(d);
 
 
            char[] a = {'A','B','C','D','E','F','G','H','I','J'};

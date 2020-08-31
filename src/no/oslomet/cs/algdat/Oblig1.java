@@ -98,13 +98,26 @@ public class Oblig1 {
         int n = a.length;
         int venstre = 0;
         int ikkevenstre = n-1;
+        int k=0;
 
-        while (a[venstre] % 2 == 1) {
-            venstre++;
+        while (venstre < ikkevenstre) {
+            while (a[venstre] %2 != 0) {
+                venstre++;
+                k++;
+            }
+            while(a[ikkevenstre]%2==0 && venstre<ikkevenstre) {
+                ikkevenstre--;
+            }
+            if (venstre < ikkevenstre) {
+                int midler = a[venstre];
+                a[venstre] = a[ikkevenstre];
+                a[ikkevenstre] = midler;
+            }
         }
-        while (a[ikkevenstre] % 2 ==0) {
-            ikkevenstre--;
-        }
+        Arrays.sort(a);
+
+
+        System.out.println(Arrays.toString(a));
 
 
     }
