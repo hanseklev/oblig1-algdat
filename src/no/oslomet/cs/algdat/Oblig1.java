@@ -9,20 +9,19 @@ public class Oblig1 {
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        sjekkarraylengde(a);
+        if (a.length == 0) {
+            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tomt");
+        }
         int n = a.length;
-        int teller = 0;
 
         for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < (n - i - 1); j++) {
-                if (a[j] > a[j + 1]) {
-                    int midlertidig = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = midlertidig;
-                    teller++;
-                }
+            if (a[i] > a[i+1]) {
+                int midlertidig = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = midlertidig;
             }
         }
+        System.out.println(a[a.length - 1]);
         return a[a.length - 1];
         // metoden vil ha flest ombyttinger når arrayet er omvendt sortert.
         // altså størst først og minst sist
@@ -33,35 +32,25 @@ public class Oblig1 {
     }
 
     // dette er feil måte å ta avvik
-    private static void sjekkarraylengde(int[] a) {
-        if (a == null) {
-            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tom");
-        }
-    }
+
 
     // int[] e, f gir feil resultater
     // blir ikke riktig opptelling for a,c,d
     public static int ombyttinger(int[] a) {
-        sjekkarraylengde(a);
+        if (a.length == 0) {
+            throw new java.util.NoSuchElementException("Arrayen " + Arrays.toString(a) + " er tomt");
+        }
+
         int n = a.length;
         int teller = 0;
-        boolean bytt;
-
 
         for (int i = 0; i < n - 1; i++) {
-            bytt = false;
-            for (int j = 0; j < (n - i - 1); j++) {
-                if (a[j] > a[j + 1]) {
-                    int midlertidig = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = midlertidig;
-                    bytt = true;
-                    teller++;
+            if (a[i] > a[i+1]) {
+                int midlertidig = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = midlertidig;
+                teller++;
                 }
-            }
-            if (bytt = false) {
-                break;
-            }
         }
         return teller;
     }
@@ -71,10 +60,11 @@ public class Oblig1 {
     public static int antallUlikeSortert(int[] a) {
         if (a.length == 0) {
             return 0;
+        } else if (a.length== 1) {
+            return 1;
         }
-        try {
-            maks(a);
-        } catch (Exception e) {
+
+        if (a[a.length-1] < a[a.length-2]) {
             throw new IllegalStateException("\nArrayet må være sortert i stigende rekkefolge");
         }
         int tallteller = 1;

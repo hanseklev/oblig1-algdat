@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
         // kjør statiske greier her
-/*
 
-        int[] c = {6, 5, 4, 3, 2, 1};
+
+        int[] c = {};
         Oblig1.maks(c);
 
         int[] b= {1, 2, 3, 4, 5};
@@ -24,9 +24,9 @@ public class Main {
 
 
         //int[] e = {6, 2, 4, 6, 9, 1, 4, 9, 10};
-        int [] b = {5, 3};
+        //int [] b = {5, 3};
         System.out.print(Oblig1.antallUlikeUsortert(b));
-        */
+
 
         System.out.println(Oblig1.flett("AM ", "L", "GEDS", "ORAKTRR", "", "R TRTE", "IO", "TGAUU"));
 
