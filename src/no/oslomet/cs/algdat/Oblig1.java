@@ -95,17 +95,17 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        int n = a.length;
+        if (a.length == 0) {
+            return;
+        }
         int venstre = 0;
-        int ikkevenstre = n-1;
-        int k=0;
+        int ikkevenstre = a.length-1;
 
         while (venstre < ikkevenstre) {
-            while (a[venstre] %2 != 0) {
+            while (venstre < ikkevenstre && a[venstre] % 2 != 0) {
                 venstre++;
-                k++;
             }
-            while(a[ikkevenstre]%2==0 && venstre<ikkevenstre) {
+            while(venstre < ikkevenstre && a[ikkevenstre] % 2 == 0 ) {
                 ikkevenstre--;
             }
             if (venstre < ikkevenstre) {
@@ -114,9 +114,6 @@ public class Oblig1 {
                 a[ikkevenstre] = midler;
             }
         }
-        Arrays.sort(a);
-
-
         System.out.println(Arrays.toString(a));
 
 
