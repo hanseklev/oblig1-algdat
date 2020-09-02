@@ -2,6 +2,8 @@ package no.oslomet.cs;
 
 import no.oslomet.cs.algdat.Oblig1;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,11 +19,14 @@ public class Main {
         Oblig1.antallUlikeSortert(d);
 
  */
-        int [] d= {1,1,3,3,4,2,6,8,9};
+        int [] d = {9,5,2,4,2,7,-2,-5, 3, 1, 10};
+        System.out.println(Arrays.toString(d));
         Oblig1.delsortering(d);
+        System.out.println(Arrays.toString(d));
 
 
-           char[] a = {'A','B','C','D','E','F','G','H','I','J'};
+
+       /*    char[] a = {'A','B','C','D','E','F','G','H','I','J'};
         System.out.println(a);
         Oblig1.rotasjon(a,-2);
         System.out.println(a);
@@ -34,6 +39,6 @@ public class Main {
 
         System.out.println(Oblig1.flett("AM ", "L", "GEDS", "ORAKTRR", "", "R TRTE", "IO", "TGAUU"));
 
-
+*/
     }
 }

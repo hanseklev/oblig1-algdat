@@ -98,7 +98,45 @@ public class Oblig1 {
         if (a.length == 0) {
             return;
         }
-        int venstre = 0;
+        int antallOddetall = 0;
+        for (int i : a) if (i % 2 != 0) antallOddetall++;
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0 && i >= antallOddetall){
+                for (int j = 0; j < i; j++) {
+                    if (a[j] % 2 == 0){
+                        int temp = a[j];
+                        a[j] = a[i];
+                        a[i] = temp;
+
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < antallOddetall; i++) {
+            int minIdx = i;
+            for (int j = i+1; j < a.length ; j++) {
+                if (a[j] < a[minIdx])minIdx = j;
+            }
+            int temp = a[minIdx];
+            a[minIdx] = a[i];
+            a[i] = temp;
+        }
+
+        for (int i = antallOddetall; i < a.length; i++) {
+            int minIdx = i;
+            for (int j = i+1; j < a.length ; j++) {
+                if (a[j] < a[minIdx])minIdx = j;
+            }
+            int temp = a[minIdx];
+            a[minIdx] = a[i];
+            a[i] = temp;
+        }
+
+
+
+        /*int venstre = 0;
         int ikkevenstre = a.length-1;
 
         while (venstre < ikkevenstre) {
@@ -113,10 +151,7 @@ public class Oblig1 {
                 a[venstre] = a[ikkevenstre];
                 a[ikkevenstre] = midler;
             }
-        }
-        System.out.println(Arrays.toString(a));
-
-
+        }*/
     }
 
     ///// Oppgave 5 //////////////////////////////////////
