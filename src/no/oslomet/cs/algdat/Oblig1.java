@@ -266,16 +266,15 @@ public class Oblig1 {
         int[] c={};
         if (a.length == 0) {
             return c;
-
         }
 
-        final int [] index = new int[a.length];
+        int [] index = new int[a.length];
 
-        int[] blabla = IntStream.range(0,a.length)
+        int[] dettefunker = IntStream.range(0,a.length)
                 .boxed().sorted((i,j) -> a[i] - a[j])
                 .mapToInt(ele -> ele).toArray();
 
-        return blabla;
+        return dettefunker;
     }
 
     ///// Oppgave 9 //////////////////////////////////////
