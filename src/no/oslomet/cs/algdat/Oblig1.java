@@ -98,61 +98,61 @@ public class Oblig1 {
         if (a.length == 0) {
             return;
         }
-        int antallOddetall = 0;
-        for (int i : a) if (i % 2 != 0) antallOddetall++;
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] % 2 != 0 && i >= antallOddetall){
-                for (int j = 0; j < i; j++) {
-                    if (a[j] % 2 == 0){
-                        int temp = a[j];
-                        a[j] = a[i];
-                        a[i] = temp;
+        int oddetall = 0;
+        int partall = a.length-1;
 
-                    }
-                }
+        //sorterer oddetall til venstre
+        while (oddetall < partall) {
+
+            while (oddetall < partall && a[oddetall] % 2 != 0) {
+                oddetall++;
+            }
+            while (oddetall < partall && a[partall] % 2 == 0) {
+                partall--;
+            }
+            if (oddetall < partall) {
+                int temp = a[oddetall];
+                a[oddetall] = a[partall];
+                a[partall] = temp;
             }
         }
-
-        for (int i = 0; i < antallOddetall; i++) {
-            int minIdx = i;
-            for (int j = i+1; j < a.length ; j++) {
-                if (a[j] < a[minIdx])minIdx = j;
-            }
-            int temp = a[minIdx];
-            a[minIdx] = a[i];
-            a[i] = temp;
+        if (partall == a.length-1) kvikksortering(a, 0, a.length-1);
+        else {
+            kvikksortering(a, 0, oddetall-1);
+            kvikksortering(a, oddetall, a.length - 1);
         }
-
-        for (int i = antallOddetall; i < a.length; i++) {
-            int minIdx = i;
-            for (int j = i+1; j < a.length ; j++) {
-                if (a[j] < a[minIdx])minIdx = j;
-            }
-            int temp = a[minIdx];
-            a[minIdx] = a[i];
-            a[i] = temp;
-        }
-
-
-
-        /*int venstre = 0;
-        int ikkevenstre = a.length-1;
-
-        while (venstre < ikkevenstre) {
-            while (venstre < ikkevenstre && a[venstre] % 2 != 0) {
-                venstre++;
-            }
-            while(venstre < ikkevenstre && a[ikkevenstre] % 2 == 0 ) {
-                ikkevenstre--;
-            }
-            if (venstre < ikkevenstre) {
-                int midler = a[venstre];
-                a[venstre] = a[ikkevenstre];
-                a[ikkevenstre] = midler;
-            }
-        }*/
     }
+
+    private static void kvikksortering(int[] a, int begin, int end)
+    {
+        if (begin < end) {
+            int idx = partisjoner(a, begin, end);
+            kvikksortering(a, begin, (idx - 1));
+            kvikksortering(a, (idx + 1), end);
+        }
+    }
+
+    private static int partisjoner(int[] a, int begin, int end){
+        int pivot = a[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end ; j++) {
+
+            if (a[j] <= pivot){
+                i++;
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+        int temp = a[i+1];
+        a[i+1] = a[end];
+        a[end] = temp;
+
+        return i+1;
+    }
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
