@@ -1,7 +1,7 @@
 package no.oslomet.cs.algdat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.stream.IntStream;
 
 public class Oblig1 {
@@ -263,18 +263,65 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        int[] c={};
+        //System.out.println(Arrays.toString(a));
         if (a.length == 0) {
-            return c;
+            return new int [0];
         }
 
+        //Kloner array og returner sortert
+        int [] clone = a.clone();
         int [] index = new int[a.length];
+        for (int n = clone.length; n > 1; n--)
+        {
+            for (int i = 1; i < n; i++)
+            {
+                if (clone[i - 1] > clone[i]){
+                    int temp = clone[i-1];
+                    clone[i-1] = clone[i];
+                    clone[i] = temp;
+                }
+            }
+        }
 
-        int[] dettefunker = IntStream.range(0,a.length)
+        int count = 0;
+        int MAX = Integer.MAX_VALUE;
+        index[a.length-1] = MAX; //setter siste verdi vaktpost
+
+        //sammenligner verdier fra orig. array med sortert klone
+        while(index[a.length-1] == MAX) {
+            int j = 0;
+            for (int i = j; i < a.length; i++) {
+                if (a[i] == clone[count] && count < a.length - 1) {
+                    index[count] = i;
+                    count++;
+                } else if (a[i] == clone[count]) {
+                    index[count] = i;
+                }
+            }
+        }
+       // System.out.println( Arrays.toString(clone));
+       //System.out.println("index " +Arrays.toString(index));
+
+      /*  int[] dettefunker = IntStream.range(0,a.length)
                 .boxed().sorted((i,j) -> a[i] - a[j])
                 .mapToInt(ele -> ele).toArray();
 
-        return dettefunker;
+        return dettefunker;*/
+      return index;
+    }
+
+    public static int min (int[] a, int fra, int til) {
+        int m = fra;
+        int minVerdi = a[fra];
+
+        for (int i = fra + 1; i < til; i++) {
+            if (a[i] < minVerdi) {
+                m = i;
+                minVerdi = a[m];
+            }
+        }
+
+        return m;
     }
 
     ///// Oppgave 9 //////////////////////////////////////

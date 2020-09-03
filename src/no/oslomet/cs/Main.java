@@ -10,40 +10,17 @@ public class Main {
     public static void main(String[] args) {
         // kjør statiske greier her
 
-/*
-        int[] c = {};
-        Oblig1.maks(c);
-
-        int[] b= {1, 2, 3, 4, 5};
-        Oblig1.ombyttinger(b);
-        int[] d = {1, 2, 3, 4, 5};
-        Oblig1.antallUlikeSortert(d);
-
- */
-
-
-        int [] d = {11, 9, 1, 15, -3};
-        System.out.println(Arrays.toString(d));
+        int [] abc = randPerm(25_000);
+        //System.out.println(Arrays.toString(abc));
         long tid = System.currentTimeMillis();
-        Oblig1.delsortering(d);
-        //Oblig1.kvikksortering(d , 0, d.length-1);
-
-        tid = System.currentTimeMillis() - tid;
-        System.out.println(Arrays.toString(d));
-        System.out.println("Tid:" + tid);
+        int [] sortert = Oblig1.indekssortering(abc);
+        tid =  System.currentTimeMillis() - tid;
+        System.out.println("TId: " + tid  + " ms");
+        //System.out.println(Arrays.toString(sortert));
 
 
+/*
 
-
-       /*    char[] a = {'A','B','C','D','E','F','G','H','I','J'};
-        System.out.println(a);
-        Oblig1.rotasjon(a,-2);
-        System.out.println(a);
-
-
-        //int[] e = {6, 2, 4, 6, 9, 1, 4, 9, 10};
-        int [] b = {5, 3};
-        System.out.print(Oblig1.antallUlikeUsortert(b));
 
 
         System.out.println(Oblig1.flett("AM ", "L", "GEDS", "ORAKTRR", "", "R TRTE", "IO", "TGAUU"));
