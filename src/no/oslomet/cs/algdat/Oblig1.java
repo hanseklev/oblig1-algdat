@@ -1,6 +1,8 @@
 package no.oslomet.cs.algdat;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.stream.IntStream;
 
 public class Oblig1 {
     private Oblig1() {
@@ -261,7 +263,19 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new UnsupportedOperationException();
+        int[] c={};
+        if (a.length == 0) {
+            return c;
+
+        }
+
+        final int [] index = new int[a.length];
+
+        int[] blabla = IntStream.range(0,a.length)
+                .boxed().sorted((i,j) -> a[i] - a[j])
+                .mapToInt(ele -> ele).toArray();
+
+        return blabla;
     }
 
     ///// Oppgave 9 //////////////////////////////////////
