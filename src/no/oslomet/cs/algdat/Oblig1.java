@@ -1,13 +1,29 @@
 package no.oslomet.cs.algdat;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class Oblig1 {
     private Oblig1() {
     }
 
+    /**
+     * OBLIG 1
+     * Hans Erling Klevstad, s341872
+     * Brian Banne, s329333
+     *
+     *
+     *
+     *
+     * * * OPPGAVE 1 * * *
+     * Naar blir det flest ombyttinger?
+     *        -metoden vil ha flest ombyttinger nar arrayet er omvendt sortert synkede max -> min
+     *
+     * Naar blir det faerrest?
+     *      det blir minst ombyttinger når metoden står i stigene rekkefolge
+     *
+     * Hvor mange blir det i gjennomsnitt?
+     *           o(n^2)
+     */
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
@@ -17,19 +33,13 @@ public class Oblig1 {
         int n = a.length;
 
         for (int i = 0; i < n - 1; i++) {
-            if (a[i] > a[i+1]) {
+            if (a[i] > a[i + 1]) {
                 int midlertidig = a[i];
                 a[i] = a[i + 1];
                 a[i + 1] = midlertidig;
             }
         }
         return a[a.length - 1];
-        // metoden vil ha flest ombyttinger nar arrayet er omvendt sortert.
-        // altsa størst forst og minst sist
-
-        // det blir minst ombyttinger når metoden står i stigene rekkefolge
-
-        //o(n*n)
     }
 
     public static int ombyttinger(int[] a) {
@@ -50,7 +60,6 @@ public class Oblig1 {
         }
         return teller;
     }
-
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
@@ -167,47 +176,33 @@ public class Oblig1 {
         a[0] = siste;
     }
 
-    //TODO: EFFECTIVE, (gcd)?
-
     ///// Oppgave 6 //////////////////////////////////////
-    public static void rotasjon(char[] a, int k) {
-        if (a.length == 0) return; //hvis tabellen er tom returner metoden arrayet uten modifikasjoner
+    public static void rotasjon(char[] a, int n) {
+        n *= -1;//invertere rotasjonsretning
+        int size = a.length;
+        int j, m;
+        char temp;
 
-        if (k > 0) roterHoyre(a, k);
-        if (k < 0) roterVenstre(a, k);
-/*
-        char siste = a[a.length - 1];
-        int j;
-        for (j = a.length-1; j > 0 ; j--) {
-            a[j]=a[j-1];
-        }
-        a[0] = siste;*/
-    }
+        if (size < 2) return;
+        if ((n %= size) < 0) n += size;
 
-    private static void roterHoyre(char[] a, int antall) {
-        for (int i = 0; i < antall; i++) {
-            char siste = a[a.length - 1];
-            int j;
-
-            for (j = a.length - 1; j > 0; j--) {
-                a[j] = a[j - 1];
+        for (int i = 0; i < gcd(size, n); i++) {
+            temp = a[i];
+            j = i;
+            while(true){
+                m = j + n;
+                if (m >= size) m = m - size;
+                if (m==i) break;
+                a[j] = a[m];
+                j=m;
             }
-            a[0] = siste;
+            a[j] = temp;
         }
     }
 
-    private static void roterVenstre(char[] a, int antall) {
-        int k = Math.abs(antall);
-        for (int i = 0; i < k; i++) {
-            char first = a[0];
-
-            int j;
-            for (j = 0; j < a.length - 1; j++) {
-                a[j] = a[j + 1];
-            }
-            a[a.length - 1] = first;
-        }
-
+    private static int gcd(int a, int b)
+    {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
     ///// Oppgave 7 //////////////////////////////////////
@@ -237,9 +232,10 @@ public class Oblig1 {
         int k = 0;
 
         for (int i = 0; i < MAX_STRING_LENGDE; i++) {
-            for (int j = 0; j < s.length; j++) {
-                char[] currentWord = s[j].toCharArray();
-                if (currentWord.length <= i) continue; //hopper til neste ord hvis det ikke er flere bokstaver igjen på gitt plass
+            for (String value : s) {
+                char[] currentWord = value.toCharArray();
+                if (currentWord.length <= i)
+                    continue; //hopper til neste ord hvis det ikke er flere bokstaver igjen på gitt plass
                 mergedArray[k++] = currentWord[i];
             }
         }
@@ -260,6 +256,7 @@ public class Oblig1 {
         }
         return sum;
     }
+
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
@@ -299,29 +296,7 @@ public class Oblig1 {
                 }
             }
         }
-       // System.out.println( Arrays.toString(clone));
-       //System.out.println("index " +Arrays.toString(index));
-
-      /*  int[] dettefunker = IntStream.range(0,a.length)
-                .boxed().sorted((i,j) -> a[i] - a[j])
-                .mapToInt(ele -> ele).toArray();
-
-        return dettefunker;*/
       return index;
-    }
-
-    public static int min (int[] a, int fra, int til) {
-        int m = fra;
-        int minVerdi = a[fra];
-
-        for (int i = fra + 1; i < til; i++) {
-            if (a[i] < minVerdi) {
-                m = i;
-                minVerdi = a[m];
-            }
-        }
-
-        return m;
     }
 
     ///// Oppgave 9 //////////////////////////////////////
@@ -337,8 +312,4 @@ public class Oblig1 {
     public static boolean inneholdt(String a, String b) {
         throw new UnsupportedOperationException();
     }
-
-    //Tut og kjor
-
-
 }
