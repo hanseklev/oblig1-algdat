@@ -8,7 +8,7 @@ Oppgaven er levert av følgende studenter:
 # Arbeidsfordeling
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
-* :D
-*
-*
+* Brian på oppgave 1,2,3, deler av 4 og 8.
+* Hans på oppgave 5,6,7, store deler av 4 og 8.
+
 

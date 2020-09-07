@@ -260,7 +260,6 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        //System.out.println(Arrays.toString(a));
         if (a.length == 0) {
             return new int [0];
         }
