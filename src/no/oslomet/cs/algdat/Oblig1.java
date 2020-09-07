@@ -70,7 +70,7 @@ public class Oblig1 {
         }
 
         if (a[a.length-1] < a[a.length-2]) {
-            throw new IllegalStateException("\nArrayet må være sortert i stigende rekkefolge");
+            throw new IllegalStateException("\nArrayet må vaere sortert i stigende rekkefolge");
         }
         int tallteller = 1;
         int n = a.length;
@@ -227,7 +227,7 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        final int MAX_STRING_LENGDE = 30; // grense for hvor lang en string kan være
+        final int MAX_STRING_LENGDE = 30; // grense for hvor lang en string kan vaere
         char[] mergedArray = new char[getStringArrayLength(s)];
         int k = 0;
 
