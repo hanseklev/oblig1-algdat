@@ -315,7 +315,7 @@ public class Oblig1 {
         ic = indexArr[2];
 
 
-        int va = a[ia], vb = a[ib], vc = a[ic]; //setter verdiene sorter for de tre forste ineksene
+        int va = a[ia], vb = a[ib], vc = a[ic]; //setter verdiene sortert stigende for de tre forste indeksene
 
         for (int i = 3; i < n ; i++) {
             if (a[i] < vc){
