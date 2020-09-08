@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class Oblig1 {
     private Oblig1() {
@@ -300,7 +301,48 @@ public class Oblig1 {
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new UnsupportedOperationException();
+        int n = a.length;
+        if (n < 3) throw new NoSuchElementException("Array må ha minst 3 verdier");
+
+        //Indeksvariabler
+        int ia, ib, ic;
+
+        int[] indexArr = new int[3];
+        System.arraycopy(a, 0, indexArr, 0, 3);
+        indexArr = indekssortering(indexArr);
+        ia = indexArr[0];
+        ib = indexArr[1];
+        ic = indexArr[2];
+
+
+        int va = a[ia], vb = a[ib], vc = a[ic]; //setter verdiene sorter for de tre forste ineksene
+
+        for (int i = 3; i < n ; i++) {
+            if (a[i] < vc){
+                if (a[i] < vb){
+                    if(a[i] < va){ //Setter ny verdi på alle tre hvis a[i] er storre enn alle tre
+                        ic = ib; //c "arver" verdien fra b
+                        vc = a[ic];
+
+                        ib = ia; //b "arver" verdien fra a
+                        vb = va;
+
+                        ia = i;
+                        va = a[ia];
+                    } else {
+                        ic = ib;
+                        vc = a[ic];
+
+                        ib = i;
+                        vb = a[ib];
+                    }
+                } else {
+                    ic = i;
+                    vc = a[ic];
+                }
+            }
+        }
+       return new int[] {ia, ib, ic};
     }
 
     ///// Oppgave 10 //////////////////////////////////////

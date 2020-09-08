@@ -9,8 +9,8 @@ Oppgaven er levert av følgende studenter:
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Brian på oppgave 1,2,3, deler av 4 og 8.
-* Hans på oppgave 5,6,7, store deler av 4 og 8.
+* Hans på oppgave 5,6,7,9 store deler av 4 og 8.
 
 # Testresultater
 
-Oppgave 1-8 har fullført uten noen feil :D
+Oppgave 1-9 har fullført uten noen feil :D
