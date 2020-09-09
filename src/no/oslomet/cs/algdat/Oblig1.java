@@ -347,10 +347,49 @@ public class Oblig1 {
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-        throw new UnsupportedOperationException();
+        char [] a = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                'U', 'V', 'W','X','Y','Z', 'Æ', 'Ø', 'Å'};
+        for (int i = 0; i < a.length; i++) {
+            if ( a[i] == bokstav) return i;
+        }
+        return -1; //returner minus hvis ikke bokstav definert
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new UnsupportedOperationException();
+        if (a.length() == 0) return true;
+        if (b.length() == 0) return false;
+
+        //Gjør om strin
+        char[] aChar = a.toCharArray();
+        char [] bChar = b.toCharArray();
+
+        int [] aint = new int[29];
+        int [] bint = new int[29];
+
+       int aIndex, bIndex;
+
+       //Iterer gjennom strengene og summerer antall forekomster
+        for (char c : aChar) {
+            aIndex = bokstavNr(c);
+            if (aIndex != -1) {
+                aint[aIndex] += 1;
+            }
+
+        }
+        for (char c : bChar) {
+            bIndex = bokstavNr(c);
+            if (bIndex != -1) {
+                bint[bIndex] += 1;
+            }
+        }
+
+        //Sammenligner opptellingene
+        for (int i = 0; i < aint.length; i++) {
+            if (aint[i] == 0){
+                continue;
+            }
+            if (aint[i] > bint[i]) return false;
+        }
+        return true;
     }
 }
